@@ -2,6 +2,10 @@ let temp = 0;
 let timer = 10;
 let start = false;
 
+function preload() {
+  
+}
+
 function setup() {
   createCanvas(500, 800);
   reset();
@@ -32,6 +36,7 @@ function draw() {
   textAlign(CENTER, CENTER);
   fill(yellow);
   textSize(18);
+  textFont('input-serif');
   text("Press Enter To Reset", width/2, 20);
 
 
@@ -41,12 +46,12 @@ function draw() {
   }
   if (timer == 0 && temp > 40){
     background(dark);
-    textSize(26);
+    textSize(22);
     fill(red)
     text("LETHAL TEMP: THE PLANET DIES", width/2, height/2);
   }else if (timer == 0 && temp <= 40){
     background(dark);
-    textSize(26);
+    textSize(22);
     fill(green)
     text("THE PLANET IS HABITABLE!", width/2, height/2)
   }
