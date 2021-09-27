@@ -48,7 +48,7 @@ function draw() {
   
   if (currmillis < intervol){
   	image(arrow, width/2 + 55, height/2 - 45);
-    currmillis = millis()
+    currmillis = millis();
   }
 
   //timer and gameState
