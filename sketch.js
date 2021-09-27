@@ -1,9 +1,10 @@
 let temp = 0;
 let timer = 10;
 let start = false;
+let arrow;
 
 function preload() {
-  
+  arrow = loadImage('assets/arrow_icon.png');
 }
 
 function setup() {
@@ -17,7 +18,8 @@ function draw() {
   let red = color('#C70016');
   let orange = color('#F54600');
   let yellow = color('#F56E00');
-  let green = color('#72A603');
+  let green = color('#00BA00');
+
 
   //display temperture 
   textAlign(CENTER, CENTER);
@@ -28,17 +30,20 @@ function draw() {
 
   //display timer
   textAlign(CENTER, CENTER);
-  textSize(28);
-  fill(red);
-  text(timer, width - 30, height - 30);
+  textSize(32);
+  fill(orange);
+  text(timer, width - 40, height - 40);
 
   //reset prompt
   textAlign(CENTER, CENTER);
-  fill(yellow);
+  fill(green);
   textSize(18);
   textFont('input-serif');
   text("Press Enter To Reset", width/2, 20);
 
+
+  arrow.resize(0, 30);
+  
 
   //timer and gameState
   if (frameCount % 60 == 0 && timer > 0 && start){
@@ -71,7 +76,11 @@ function mousePressed(){
 function keyEvent(){
   start = true;
   temp += 3;
-  //displayArrow() //up arrow stays for a fraction of a second or so next to temp
+  displayArrow() //up arrow stays for a fraction of a second or so next to temp
+}
+
+function displayArrow(){
+  image(arrow, width/2 + 55, height/2 - 45);
 }
 
 function reset(){
