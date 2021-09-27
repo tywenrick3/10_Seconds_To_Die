@@ -2,6 +2,8 @@ let temp = 0;
 let timer = 10;
 let start = false;
 let arrow;
+let currmillis;
+let intervol;
 
 function preload() {
   arrow = loadImage('assets/arrow_icon.png');
@@ -39,11 +41,15 @@ function draw() {
   fill(green);
   textSize(18);
   textFont('input-serif');
-  text("Press Enter To Reset", width/2, 20);
+  text("Press Enter To Reset", width/2, 30);
 
 
   arrow.resize(0, 30);
   
+  if (currmillis < intervol){
+  	image(arrow, width/2 + 55, height/2 - 45);
+    currmillis = millis()
+  }
 
   //timer and gameState
   if (frameCount % 60 == 0 && timer > 0 && start){
@@ -70,18 +76,16 @@ function keyPressed() {
 }
 
 function mousePressed(){
+  currmillis = millis();
+  intervol = millis() + 100;
   keyEvent();
 }
 
 function keyEvent(){
   start = true;
   temp += 3;
-  displayArrow() //up arrow stays for a fraction of a second or so next to temp
 }
 
-function displayArrow(){
-  image(arrow, width/2 + 55, height/2 - 45);
-}
 
 function reset(){
   temp = 0;
